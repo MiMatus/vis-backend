@@ -7,9 +7,6 @@ use Nette\Database\Connection;
 final class OfferQuery extends AQueryObject
 {
 
-    private array $conds = [];
-
-
     public function getQuery(): string
     {
 

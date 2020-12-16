@@ -7,8 +7,6 @@ use Nette\Database\Connection;
 final class SupplierQuery extends AQueryObject
 {
 
-    private array $conds = [];
-
     public function getQuery(): string
     {
         return "                

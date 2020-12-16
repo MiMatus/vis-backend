@@ -7,7 +7,6 @@ use Nette\Database\Connection;
 
 final class ProjectQuery extends AQueryObject
 {
-    private array $conds = [];
 
     public function getQuery(): string
     {
