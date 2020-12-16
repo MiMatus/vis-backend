@@ -1,0 +1,30 @@
+{
+    "name": "vis/backend",
+    "description": "VIS - Semestral project",
+    "type": "project",
+    "license": "MIT",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "Michal Matus",
+            "email": "mat0370@vsb.cz"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"SkillShare\\": "src/"}
+    }, 
+    "autoload-dev": {
+        "psr-4": {"SkillShare\\Test\\": "tests/"}
+    },       
+	"require": {
+		"php": ">= 7.4",
+		"nette/database": "^3.0",
+        "tracy/tracy": "^2.7"
+	},
+	"require-dev": {
+		"phpstan/phpstan": "^0.12",
+		"phpstan/phpstan-nette": "^0.12",
+		"nette/tester": "^2.3"
+	},
+	"minimum-stability": "stable"
+}
