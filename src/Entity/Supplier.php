@@ -2,8 +2,6 @@
 
 namespace SkillShare\Entity;
 
-use LogicException;
-
 final class Supplier extends User
 {
    private string $name;
@@ -17,7 +15,7 @@ final class Supplier extends User
        string $token, 
        Location $location, 
        string $name,
-       ?int $id
+       ?int $id = null
     ) {
        parent::__construct($email, $token, $id);
        $this->location = $location;
