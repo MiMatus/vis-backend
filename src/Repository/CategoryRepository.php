@@ -4,6 +4,7 @@ namespace SkillShare\Repository;
 
 use SkillShare\Entity\Category;
 use SkillShare\Mapper\CategoryMapper;
+use SkillShare\Mapper\IMapper;
 use SkillShare\QueryObject\CategoryQuery;
 use Tracy\Logger;
 
@@ -11,12 +12,12 @@ final class CategoryRepository
 {
     private \WeakMap $simpleCache;
 
-    private CategoryMapper $categoryMapper;
+    private IMapper $categoryMapper;
 
     private Logger $logger;
 
     public function __construct(
-        CategoryMapper $categoryMapper,
+        IMapper $categoryMapper,
         Logger $logger
     ) {
         $this->simpleCache = new \WeakMap();

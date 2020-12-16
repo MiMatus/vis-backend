@@ -20,6 +20,11 @@ final class CategoryMapper extends AMapper
         $this->offerInsertQuery = $offerInsertQuery;
     }
 
+    public function save(Category $object): bool
+    {
+        return true;
+    }
+
     protected function mapRows(array $rows): array
     {
         $categories = [];

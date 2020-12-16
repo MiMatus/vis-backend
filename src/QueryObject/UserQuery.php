@@ -4,7 +4,7 @@ namespace SkillShare\QueryObject;
 
 use Nette\Database\Connection;
 
-final class UserQuery implements IQueryObject
+final class UserQuery extends AQueryObject
 {
     private array $conds = [];
 
@@ -18,11 +18,6 @@ final class UserQuery implements IQueryObject
             FROM users U
             WHERE ?and
         ";
-    }
-
-    public function getParameters(): array
-    {
-        return array_values($this->conds);
     }
 
     public function withIdCond(int $id): self

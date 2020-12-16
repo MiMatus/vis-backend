@@ -4,7 +4,7 @@ namespace SkillShare\QueryObject;
 
 use Nette\Database\Connection;
 
-final class ReviewQuery implements IQueryObject
+final class ReviewQuery extends AQueryObject
 {
 
     private array $conds = [];
@@ -23,11 +23,6 @@ final class ReviewQuery implements IQueryObject
             FROM reviews R
             WHERE ?and
         ";
-    }
-
-    public function getParameters(): array
-    {
-        return array_values($this->conds);
     }
 
     public function withProjectIdCond(int $projectId): self

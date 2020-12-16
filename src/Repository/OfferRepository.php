@@ -3,6 +3,7 @@
 namespace SkillShare\Repository;
 
 use SkillShare\Entity\Offer;
+use SkillShare\Mapper\IMapper;
 use SkillShare\Mapper\OfferMapper;
 use SkillShare\QueryObject\OfferQuery;
 use Tracy\Logger;
@@ -11,12 +12,12 @@ final class OfferRepository
 {
     private \WeakMap $simpleCache;
 
-    private OfferMapper $offerMapper;
+    private IMapper $offerMapper;
 
     private Logger $logger;
 
     public function __construct(
-        OfferMapper $offerMapper,
+        IMapper $offerMapper,
         Logger $logger
     ) {
         $this->simpleCache = new \WeakMap();

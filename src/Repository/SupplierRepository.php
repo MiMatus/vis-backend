@@ -3,6 +3,7 @@
 namespace SkillShare\Repository;
 
 use SkillShare\Entity\Supplier;
+use SkillShare\Mapper\IMapper;
 use SkillShare\Mapper\SupplierMapper;
 use SkillShare\QueryObject\SupplierQuery;
 use Tracy\Logger;
@@ -11,12 +12,12 @@ final class SupplierRepository
 {
     private \WeakMap $simpleCache;
 
-    private SupplierMapper $supplierMapper;
+    private IMapper $supplierMapper;
 
     private Logger $logger;
 
     public function __construct(
-        SupplierMapper $supplierMapper,
+        IMapper $supplierMapper,
         Logger $logger
     ) {
         $this->queryCache = new \WeakMap();

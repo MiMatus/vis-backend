@@ -48,7 +48,7 @@ final class SupplierMapper extends AMapper
                 $supplier->getEmail(),
                 $supplier->getToken(),
             );            
-            $this->connection->query($userQuery->getQuery(), $userQuery->getParameters());
+            $this->connection->query($userQuery->getQuery(), ...$userQuery->getParameters());
             $userId = (int)$this->connection->getInsertId();
 
             $locationQuery = $this->locationInsertQuery->withInsert(
@@ -59,7 +59,7 @@ final class SupplierMapper extends AMapper
                 $supplier->getLocation()->getLat(), 
                 $supplier->getLocation()->getLng()
             );
-            $this->connection->query($locationQuery->getQuery(), $locationQuery->getParameters());  
+            $this->connection->query($locationQuery->getQuery(), ...$locationQuery->getParameters());  
             $locationId = (int)$this->connection->getInsertId();
 
             $supplierQuery = $this->supplierInserQuery->withInsert(
@@ -67,7 +67,7 @@ final class SupplierMapper extends AMapper
                 $locationId,
                 $supplier->getName()
             );
-            $this->connection->query($supplierQuery->getQuery(), $supplierQuery->getParameters());
+            $this->connection->query($supplierQuery->getQuery(), ...$supplierQuery->getParameters());
             $this->connection->commit();
         } catch(\Exception $exception){
             $this->connection->rollBack();
@@ -80,7 +80,6 @@ final class SupplierMapper extends AMapper
 
     protected function mapRows(array $rows): array
     {
-        //$reviews = $this->getReviews($rows);
         $suppliers = [];
         foreach($rows as $row){
             $suppliers[] = new Supplier(
@@ -97,39 +96,8 @@ final class SupplierMapper extends AMapper
                 ),
                 $row->name,
                 $row->id
-                //$reviews[$row->id] ?? []
             );
         }
         return $suppliers;
     }
-
-    /*private function getReviewInsertQuery(array $reviews): ReviewInsertQuery
-    {
-        $query = $this->reviewInsertQuery;
-        foreach($reviews as $review){
-            $query = $query->withInsert(
-                $review->getUserId(),
-                $review->getProjectId(),
-                $review->isPositive(),
-                $review->getContent(),
-            );
-        }
-        return $query;
-    }*/
-
-  /*  private function getReviews(array $rows): array
-    {
-        $ids = array_column($rows, 'id');
-        $reviewsData = $this->safelyExecuteQuery($this->reviewQuery->withSupplierIdsCond($ids));
-        $reviews = [];
-        foreach($reviewsData as $reviewData){
-            $reviews[$reviewData->user_id] = new Review(
-                $reviewData->user_id, 
-                $reviewData->project_id, 
-                (bool) $reviewData->positive, 
-                $reviewData->content
-            );
-        }
-        return $reviews;
-    }*/
 }

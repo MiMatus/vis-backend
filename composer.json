@@ -19,7 +19,8 @@
 	"require": {
 		"php": ">= 7.4",
 		"nette/database": "^3.0",
-        "tracy/tracy": "^2.7"
+        "tracy/tracy": "^2.7",
+        "nette/caching": "^3.0"
 	},
 	"require-dev": {
 		"phpstan/phpstan": "^0.12",

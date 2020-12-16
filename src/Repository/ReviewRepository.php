@@ -3,6 +3,7 @@
 namespace SkillShare\Repository;
 
 use SkillShare\Entity\Review;
+use SkillShare\Mapper\IMapper;
 use SkillShare\Mapper\ReviewMapper;
 use SkillShare\QueryObject\ReviewQuery;
 use Tracy\Logger;
@@ -11,12 +12,12 @@ final class ReviewRepository
 {
     private \WeakMap $simpleCache;
 
-    private ReviewMapper $reviewMapper;
+    private IMapper $reviewMapper;
 
     private Logger $logger;
 
     public function __construct(
-        ReviewMapper $reviewMapper,
+        IMapper $reviewMapper,
         Logger $logger
     ) {
         $this->simpleCache = new \WeakMap();

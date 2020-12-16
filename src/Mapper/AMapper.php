@@ -34,28 +34,11 @@ abstract class AMapper implements IMapper
     private function safelyExecuteQuery(IQueryObject $query): array
     {
         try{
-           // $this->connection->query($query->getQuery(), $query->getParameters())->fetchAll();
-           // var_dump($this->connection->getLastQueryString());
-            return $this->connection->query($query->getQuery(), $query->getParameters())->fetchAll();
+            return $this->connection->query($query->getQuery(), ...$query->getParameters())->fetchAll();
         } catch(\Exception $exception) {
             $this->logger->log($exception);
             return [];
         }       
-    }
-
-    protected function executeSaveQueries(IQueryObject ...$queries): bool
-    {
-        try{
-            $this->connection->beginTransaction();
-            foreach($queries as $query){
-                $this->connection->query($query->getQuery(), $query->getParameters());
-            }
-            $this->connection->commit();
-        } catch(\Exception $exception) {
-            $this->connection->rollBack();
-            return false;
-        }
-        return true;
     }
 
     abstract protected function mapRows(array $rows): array;

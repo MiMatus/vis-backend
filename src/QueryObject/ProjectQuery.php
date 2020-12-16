@@ -5,7 +5,7 @@ namespace SkillShare\QueryObject;
 use SkillShare\Enitity\Location;
 use Nette\Database\Connection;
 
-final class ProjectQuery implements IQueryObject
+final class ProjectQuery extends AQueryObject
 {
     private array $conds = [];
 
@@ -33,12 +33,6 @@ final class ProjectQuery implements IQueryObject
             WHERE ?and
         ";
     }
-
-    public function getParameters(): array
-    {
-        return array_values($this->conds);
-    }
-
     public function withIdCond(int $id): self
     {
         $clone = clone $this;

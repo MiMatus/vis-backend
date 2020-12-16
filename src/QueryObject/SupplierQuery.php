@@ -4,7 +4,7 @@ namespace SkillShare\QueryObject;
 
 use Nette\Database\Connection;
 
-final class SupplierQuery implements IQueryObject
+final class SupplierQuery extends AQueryObject
 {
 
     private array $conds = [];
@@ -30,11 +30,6 @@ final class SupplierQuery implements IQueryObject
             JOIN locations L ON L.id = S.location_id
             WHERE ?and
         ";
-    }
-
-    public function getParameters(): array
-    {
-        return array_values($this->conds);
     }
 
     public function withIdCond(int $id): self

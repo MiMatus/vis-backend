@@ -4,7 +4,7 @@ namespace SkillShare\QueryObject;
 
 use Nette\Database\Connection;
 
-final class ReviewInsertQuery implements IQueryObject
+final class ReviewInsertQuery extends AQueryObject
 {
 
     private Connection $connection;
@@ -23,7 +23,7 @@ final class ReviewInsertQuery implements IQueryObject
 
     public function getParameters(): array
     {
-        return $this->inserts;
+        return [$this->inserts];
     }
 
     public function withInsert(

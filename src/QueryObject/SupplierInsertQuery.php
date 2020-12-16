@@ -4,7 +4,7 @@ namespace SkillShare\QueryObject;
 
 use Nette\Database\Connection;
 
-final class SupplierInsertQuery implements IQueryObject
+final class SupplierInsertQuery extends AQueryObject
 {
 
     private array $inserts = [];
@@ -16,7 +16,7 @@ final class SupplierInsertQuery implements IQueryObject
 
     public function getParameters(): array
     {
-        return $this->inserts;
+        return [$this->inserts];
     }
 
     public function withInsert(

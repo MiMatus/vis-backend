@@ -4,7 +4,7 @@ namespace SkillShare\QueryObject;
 
 use Nette\Database\Connection;
 
-final class CategoryQuery implements IQueryObject
+final class CategoryQuery extends AQueryObject
 {
 
     private array $conds = [];
@@ -21,11 +21,6 @@ final class CategoryQuery implements IQueryObject
             FROM categories C
             WHERE ?and
         ";
-    }
-
-    public function getParameters(): array
-    {
-        return array_values($this->conds);
     }
 
     public function withIdCond(int $id): self

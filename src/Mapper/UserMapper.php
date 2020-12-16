@@ -26,7 +26,7 @@ final class UserMapper extends AMapper
     {
         try{
             $userInsertQuery = $this->userInsertQuery->withInsert($user->getEmail(), $user->getToken());
-            $this->connection->query($userInsertQuery->getQuery(), $userInsertQuery->getParameters());
+            $this->connection->query($userInsertQuery->getQuery(), ...$userInsertQuery->getParameters());
             $userId = (int)$this->connection->getInsertId();
             $user->setId($userId);
             return true;

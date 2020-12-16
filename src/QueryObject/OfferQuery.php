@@ -4,7 +4,7 @@ namespace SkillShare\QueryObject;
 
 use Nette\Database\Connection;
 
-final class OfferQuery implements IQueryObject
+final class OfferQuery extends AQueryObject
 {
 
     private array $conds = [];
@@ -23,11 +23,6 @@ final class OfferQuery implements IQueryObject
             FROM `offers` O
             WHERE ?and
         ";
-    }
-
-    public function getParameters(): array
-    {
-        return array_values($this->conds);
     }
 
     public function withSupplierIdsCond(array $supplierIds): self

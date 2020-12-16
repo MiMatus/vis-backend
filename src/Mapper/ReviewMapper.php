@@ -32,7 +32,7 @@ final class ReviewMapper extends AMapper
                 $review->isPositive(), 
                 $review->getContent()
             );
-            $this->connection->query($reviewInsertQuery->getQuery(), $reviewInsertQuery->getParameters());
+            $this->connection->query($reviewInsertQuery->getQuery(), ...$reviewInsertQuery->getParameters());
             $reviewId = (int)$this->connection->getInsertId();
             $review->setId($reviewId);
             return true;

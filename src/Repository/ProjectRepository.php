@@ -3,6 +3,7 @@
 namespace SkillShare\Repository;
 
 use SkillShare\Entity\Project;
+use SkillShare\Mapper\IMapper;
 use SkillShare\Mapper\ProjectMapper;
 use SkillShare\QueryObject\ProjectQuery;
 use Tracy\Logger;
@@ -11,12 +12,12 @@ final class ProjectRepository
 {
     private \WeakMap $simpleCache;
 
-    private ProjectMapper $projectMapper;
+    private IMapper $projectMapper;
 
     private Logger $logger;
 
     public function __construct(
-        ProjectMapper $projectMapper,
+        IMapper $projectMapper,
         Logger $logger
     ) {
         $this->simpleCache = new \WeakMap();

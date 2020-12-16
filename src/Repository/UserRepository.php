@@ -3,6 +3,7 @@
 namespace SkillShare\Repository;
 
 use SkillShare\Entity\User;
+use SkillShare\Mapper\IMapper;
 use SkillShare\Mapper\UserMapper;
 use SkillShare\QueryObject\UserQuery;
 use Tracy\Logger;
@@ -11,12 +12,12 @@ final class UserRepository
 {
     private \WeakMap $simpleCache;
 
-    private UserMapper $userMapper;
+    private IMapper $userMapper;
 
     private Logger $logger;
 
     public function __construct(
-        UserMapper $userMapper,
+        IMapper $userMapper,
         Logger $logger
     ) {
         $this->simpleCache = new \WeakMap();

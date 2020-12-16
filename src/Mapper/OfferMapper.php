@@ -31,7 +31,7 @@ final class OfferMapper extends AMapper
                 $offer->getPrice(), 
                 $offer->getCompletionDate()
             );
-            $this->connection->query($offerInsertQuery->getQuery(), $offerInsertQuery->getParameters());
+            $this->connection->query($offerInsertQuery->getQuery(), ...$offerInsertQuery->getParameters());
             $offerId = (int)$this->connection->getInsertId();
             $offer->setId($offerId);
             return true;

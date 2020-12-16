@@ -12,4 +12,6 @@ interface IMapper
 
     public function findAll(IQueryObject $query): iterable;
 
+    public function save(object $object): bool;
+
 }

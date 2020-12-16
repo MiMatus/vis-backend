@@ -39,7 +39,7 @@ final class ProjectMapper extends AMapper
                 $project->getLocation()->getLat(), 
                 $project->getLocation()->getLng()
             );
-            $this->connection->query($locationQuery->getQuery(), $locationQuery->getParameters());  
+            $this->connection->query($locationQuery->getQuery(), ...$locationQuery->getParameters());  
             $locationId = (int)$this->connection->getInsertId();
             $project->getLocation()->setId($locationId);
 
@@ -52,7 +52,7 @@ final class ProjectMapper extends AMapper
                 $locationId,
                 $project->getUserId()
             );
-            $this->connection->query($projectInsertQuery->getQuery(), $projectInsertQuery->getParameters());
+            $this->connection->query($projectInsertQuery->getQuery(), ...$projectInsertQuery->getParameters());
             $projectId = (int)$this->connection->getInsertId(); 
             $project->setId($projectId);
             return true;
