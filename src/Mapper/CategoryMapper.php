@@ -20,7 +20,7 @@ final class CategoryMapper extends AMapper
         $this->offerInsertQuery = $offerInsertQuery;
     }
 
-    public function save(Category $object): bool
+    public function save(object $object): bool
     {
         return true;
     }

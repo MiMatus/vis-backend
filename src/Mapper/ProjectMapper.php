@@ -28,7 +28,7 @@ final class ProjectMapper extends AMapper
         $this->locationInsertQuery = $locationInsertQuery;
     }
 
-    public function save(Project $project): bool
+    public function save(object $project): bool
     {
         try{
             $locationQuery = $this->locationInsertQuery->withInsert(

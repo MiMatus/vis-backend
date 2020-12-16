@@ -22,7 +22,7 @@ final class UserMapper extends AMapper
     }
 
 
-    public function save(User $user): bool
+    public function save(object $user): bool
     {
         try{
             $userInsertQuery = $this->userInsertQuery->withInsert($user->getEmail(), $user->getToken());

@@ -22,7 +22,7 @@ final class ReviewMapper extends AMapper
     }
 
 
-    public function save(Review $review): bool
+    public function save(object $review): bool
     {
 
         try{

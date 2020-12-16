@@ -40,7 +40,7 @@ final class SupplierMapper extends AMapper
         $this->reviewInsertQuery = $reviewInsertQuery;*/
     }
 
-    public function save(Supplier $supplier): bool
+    public function save(object $supplier): bool
     {
         try{
             $this->connection->beginTransaction();
