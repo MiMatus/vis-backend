@@ -1,9 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace SkillShare\Mapper;
+namespace SkillShare\Mapper\File;
 
 use Nette\Caching\Cache;
 use Nette\Caching\Storages\FileStorage;
+use SkillShare\Mapper\IMapper;
 use SkillShare\QueryObject\IQueryObject;
 use Tracy\Logger;
 
